@@ -1,1 +1,1 @@
-//= require_tree 'leaflet_gem'
+//= require_tree .
