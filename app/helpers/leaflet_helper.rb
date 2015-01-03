@@ -4,9 +4,8 @@ module LeafletHelper
   MAPID = "map"
   MINZOOM = 0
   MAXZOOM = 18
-  TILE_PROVIDER = 'CLOUDMADE'
+  TILE_PROVIDER = 'GOOGLEMAP'
   TILE_STYLE_ID = 997
-  MAP_BOUNDS = Rails.application.config.map_bounds
   
   def LeafletMap(options)
     options_with_indifferent_access = options.with_indifferent_access
@@ -46,7 +45,9 @@ module LeafletHelper
     # add any polylines
     js << "addPolylines(#{options[:polylines]});" unless options[:polylines].nil?
     # set the map bounds
-    js << "setMapBounds(#{MAP_BOUNDS[0][0]},#{MAP_BOUNDS[0][1]},#{MAP_BOUNDS[1][0]},#{MAP_BOUNDS[1][1]});"
+    map_bounds = SystemConfig.instance.map_bounds
+
+    js << "setMapBounds(#{map_bounds[0][0]},#{map_bounds[0][1]},#{map_bounds[1][0]},#{map_bounds[1][1]});"
     js << "showMap();"
     js * ("\n")
   end
