@@ -1,0 +1,28 @@
+.leaflet-control-measure {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 21px;
+}
+
+
+
+.leaflet-control-measure a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 22px;
+  height: 22px;
+  display: block;
+  text-align: center;
+  color: #ccc;
+  text-decoration: none;
+  font: bold 16px/22px Arial,Helvetica,sans-serif;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+.leaflet-control-measure > .leaflet-control-measure-enabled {
+  color: #000;
+}
+.leaflet-control-measure > .leaflet-control-measure-disabled {
+  color: #ccc;
+}
