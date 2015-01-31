@@ -312,7 +312,6 @@ var leaflet_tools = new function() {
 
 	this.select_marker_by_id = function(id) {
 		marker = this.find_marker_by_id(id);
-		console.log(marker.id);
 		if (marker) {
 			this.select_marker(marker);
 		}
