@@ -15,10 +15,7 @@ var leaflet_tools = new function() {
 	var OPENSTREETMAP_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var OPENSTREETMAP_ATTRIB = 'Map data © OpenStreetMap contributors';
 
-	var CLOUDMADE_URL = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/{styleId}/256/{z}/{x}/{y}.png';
-	var CLOUDMADE_ATTRIB = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-					'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-					'Imagery © <a href="http://cloudmade.com">CloudMade</a>';
+	var MAPBOX_URL = 'http://{s}.tiles.mapbox.com/v4/%map_key%/{z}/{x}/{y}.png?access_token=%access_token%';
 
   this.markers = function() {
 		return LMmarkers;
@@ -38,20 +35,20 @@ var leaflet_tools = new function() {
 	 */
 	this.init = function(mapId, options) {
 		LMmap = L.map(mapId);
-		//alert(options.tile_provider);
+		//Console.log(options);
 		//alert(options.min_zoom);
 		//alert(options.max_zoom);
 		if (options.tile_provider == 'OPENSTREETMAP') {
 			var mapUrl = OPENSTREETMAP_URL;
 			var mapAttrib = OPENSTREETMAP_ATTRIB;
 			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, attribution: mapAttrib}).addTo(LMmap);
-		} else if (options.tile_provider == 'GOOGLEMAP') {
+		} else if (options.tile_provider == 'MAPBOX') {
+			var mapUrl = MAPBOX_URL.replace("%map_key%", options.map_key).replace("%access_token%", options.access_token);
+			//Console.log(mapURL);
+			L.tileLayer(mapUrl, {zoomControl: false, detectRetina: true}).addTo(LMmap);
+		} else {
 			var googleLayer = new L.Google('ROADMAP');
 	    LMmap.addLayer(googleLayer);
-		} else {
-			var mapUrl = CLOUDMADE_URL;
-			var mapAttrib = CLOUDMADE_ATTRIB;
-			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, attribution: mapAttrib, styleId: options.tile_style_id}).addTo(LMmap);
 		}
 		// install a popup listener
 		LMmap.on('popupopen', function(event){
@@ -343,7 +340,7 @@ var leaflet_tools = new function() {
 	 */
 	this.create_marker = function(id, lat, lng, iconClass, popupText, name, open, draggable, zindex) {
 
-		//alert(id + "," + lat + "," + lng + "," + popupText + "," + name + "," + open);
+		alert(id + "," + lat + "," + lng + "," + popupText + "," + name + "," + open);
 
 		var options = {
 			"title" : name,
@@ -427,7 +424,6 @@ var leaflet_tools = new function() {
 				maxLng = maxLng > marker_array[i].getLatLng().lng ? maxLng : marker_array[i].getLatLng().lng;
 			}
 		}
-
 		return [[minLat, minLng], [maxLat, maxLng]];
 	};
 	this.set_map_to_bounds = function(marker_array) {
