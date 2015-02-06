@@ -59,8 +59,11 @@ L.Control.Measure = L.Control.extend({
   },
 
   _onClick: function() {
-    if (this._enabled) this._disable();
-    else               this._enable();
+    if (this._enabled) {
+      this._disable();
+    } else {
+      this._enable();
+    }
   },
 
   _onMapClick: function(e) {

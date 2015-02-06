@@ -108,7 +108,7 @@ L.Map.mergeOptions({
 });
 
 L.Map.addInitHook(function() {
-  if (this.options.measureControl) {
+  if (this.options.locateHere) {
     this.locateHere = new L.Control.LocateHere();
     this.addControl(this.locateHere);
   }
