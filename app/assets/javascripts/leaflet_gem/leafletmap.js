@@ -340,7 +340,7 @@ var leaflet_tools = new function() {
 	 */
 	this.create_marker = function(id, lat, lng, iconClass, popupText, name, open, draggable, zindex) {
 
-		alert(id + "," + lat + "," + lng + "," + popupText + "," + name + "," + open);
+		//alert(id + "," + lat + "," + lng + "," + popupText + "," + name + "," + open);
 
 		var options = {
 			"title" : name,
