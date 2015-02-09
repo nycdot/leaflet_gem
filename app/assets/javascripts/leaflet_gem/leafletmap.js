@@ -73,7 +73,7 @@ var leaflet_tools = new function() {
 	 * Centers the map on a specified marker without changing the zoom level
 	 */
 	this.center_on_marker = function(markerId) {
-		var marker = find_marker_by_id(markerId);
+		var marker = this.find_marker_by_id(markerId);
 		if (marker) {
 			var latlng = marker.getLatLng();
 			this.pan_to(latlng.lat, latlng.lng);
