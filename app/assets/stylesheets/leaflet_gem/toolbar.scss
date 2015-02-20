@@ -1,0 +1,16 @@
+.leaflet-toolbar a {
+ 	background-image: image-url('leaflet/spritesheet.png');
+ 	background-repeat: no-repeat;
+ }
+
+ .leaflet-toolbar-enabled {
+   border-color: #285E8E !important;
+   background-color: #3071A9 !important;
+   color: #FFF !important;
+ }
+
+ .leaflet-toolbar-disabled {
+   background-color: #FFF;
+   border-color: #000;
+   color: #000;
+ }

@@ -20,10 +20,10 @@ L.Control.LocateHere = L.Control.extend({
     this._map = map;
     this._features.addTo(map);
 
-    this._container = L.DomUtil.create('div', 'leaflet-control-locate-here leaflet-bar leaflet-control');
-    this._button = L.DomUtil.create('a', 'leaflet-bar-part', this._container);
+    this._container = L.DomUtil.create('div', 'leaflet-toolbar leaflet-control-locate-here leaflet-bar leaflet-control');
+    this._button = L.DomUtil.create('a', 'leaflet-bar-part leaflet-control-locate-here', this._container);
     this._button.href = '#';
-    this._button.innerHTML = '&#8659;';
+    //this._button.innerHTML = '&#8659;';
     this._button.title = 'Locate Here';
 
     L.DomEvent
@@ -42,7 +42,7 @@ L.Control.LocateHere = L.Control.extend({
     this._features.clearLayers();
 
     this._enabled = true;
-    L.DomUtil.addClass(this._button, 'leaflet-control-locate-here-enabled');
+    L.DomUtil.addClass(this._button, 'leaflet-toolbar-enabled');
     this._map.on('click', this._onMapClick, this);
 
     // Call a call back if it exists
@@ -53,7 +53,7 @@ L.Control.LocateHere = L.Control.extend({
   },
   _disable: function() {
     this._enabled = false;
-    L.DomUtil.removeClass(this._button, 'leaflet-control-locate-here-enabled');
+    L.DomUtil.removeClass(this._button, 'leaflet-toolbar-enabled');
     // Remove the marker
     this._features.clearLayers();
     // Call the call back if it exists

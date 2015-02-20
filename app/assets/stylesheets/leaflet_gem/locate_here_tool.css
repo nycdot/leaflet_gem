@@ -1,3 +1,7 @@
+.leaflet-toolbar .leaflet-control-locate-here {
+  background-position: -122px -2px;
+}
+
 .leaflet-control-locate-here {
   font-size: 16px;
   font-weight: bold;
@@ -17,10 +21,4 @@
   font: bold 16px/22px Arial,Helvetica,sans-serif;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-}
-.leaflet-control-locate-here > .leaflet-control-locate-here-enabled {
-  color: #C00;
-}
-.leaflet-control-locate-here > .leaflet-control-locate-here-disabled {
-  color: #ccc;
 }

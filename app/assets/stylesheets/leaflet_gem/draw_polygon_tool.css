@@ -1,3 +1,7 @@
+.leaflet-toolbar .leaflet-control-draw-polygon {
+  background-position: -31px -2px;
+}
+
 .leaflet-control-draw-polygon {
   font-size: 16px;
   font-weight: bold;
@@ -19,8 +23,12 @@
   border-radius: 4px;
 }
 .leaflet-control-draw-polygon > .leaflet-control-draw-polygon-enabled {
-  color: #C00;
+  border-color: #285E8E;
+  background-color: #3071A9;
+  color: #FFF;
 }
 .leaflet-control-draw-polygon > .leaflet-control-draw-polygon-disabled {
-  color: #ccc;
+  background-color: #FFF;
+  border-color: #000;
+  color: #000;
 }

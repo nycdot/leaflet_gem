@@ -24,10 +24,10 @@ L.Control.Measure = L.Control.extend({
     this._map = map;
     this._features.addTo(map);
 
-    this._container = L.DomUtil.create('div', 'leaflet-control-measure leaflet-bar leaflet-control');
-    this._button = L.DomUtil.create('a', 'leaflet-bar-part', this._container);
+    this._container = L.DomUtil.create('div', 'leaflet-toolbar leaflet-control-measure leaflet-bar leaflet-control');
+    this._button = L.DomUtil.create('a', 'leaflet-bar-part leaflet-control-measure ', this._container);
     this._button.href = '#';
-    this._button.innerHTML = '&#8660;';
+    //this._button.innerHTML = '&#8660;';
     this._button.title = 'Measure';
 
     L.DomEvent
@@ -49,12 +49,12 @@ L.Control.Measure = L.Control.extend({
     this._markerList = [];
 
     this._enabled = true;
-    L.DomUtil.addClass(this._button, 'leaflet-control-measure-enabled');
+    L.DomUtil.addClass(this._button, 'leaflet-toolbar-enabled');
     this._map.on('click', this._onMapClick, this);
   },
   _disable: function() {
     this._enabled = false;
-    L.DomUtil.removeClass(this._button, 'leaflet-control-measure-enabled');
+    L.DomUtil.removeClass(this._button, 'leaflet-toolbar-enabled');
     this._map.off('click', this._onMapClick, this);
   },
 
@@ -90,7 +90,7 @@ L.Control.Measure = L.Control.extend({
       //var sz  = 'Distance: ' + (distance > 50000 ? (distance/1000).toFixed(2) + ' km.' : distance.toFixed(2) + ' m.');
       this._line.bindPopup(sz).openPopup();
 
-      this._disable();
+      //this._disable();
     }
   },
 

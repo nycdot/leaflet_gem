@@ -21,10 +21,10 @@ L.Control.DrawPolygon = L.Control.extend({
     this._map = map;
     this._features.addTo(map);
 
-    this._container = L.DomUtil.create('div', 'leaflet-control-draw-polygon leaflet-bar leaflet-control');
-    this._button = L.DomUtil.create('a', 'leaflet-bar-part', this._container);
+    this._container = L.DomUtil.create('div', 'leaflet-toolbar leaflet-control-draw-polygon leaflet-bar leaflet-control');
+    this._button = L.DomUtil.create('a', 'leaflet-bar-part leaflet-control-draw-polygon', this._container);
     this._button.href = '#';
-    this._button.innerHTML = '&#8658;';
+    //this._button.innerHTML = '&#8658;';
     this._button.title = 'Draw Polygon';
 
     this._polygon_drawer = new L.Draw.Polygon(this._map);
@@ -44,7 +44,7 @@ L.Control.DrawPolygon = L.Control.extend({
     this._features.clearLayers();
     this._layer = null;
     this._enabled = true;
-    L.DomUtil.addClass(this._button, 'leaflet-control-draw-polygon-enabled');
+    L.DomUtil.addClass(this._button, 'leaflet-toolbar-enabled');
 
     // Call a call back if it exists
     if (this.options.on_enable) {
@@ -57,7 +57,7 @@ L.Control.DrawPolygon = L.Control.extend({
     this._enabled = false;
     this._features.clearLayers();
 
-    L.DomUtil.removeClass(this._button, 'leaflet-control-draw-polygon-enabled');
+    L.DomUtil.removeClass(this._button, 'leaflet-toolbar-enabled');
     // Call the call back if it exists
     if (this.options.on_disable) {
       this.options.on_disable();
