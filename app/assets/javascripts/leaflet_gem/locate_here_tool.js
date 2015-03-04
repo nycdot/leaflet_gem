@@ -77,6 +77,17 @@ L.Control.LocateHere = L.Control.extend({
     marker.on('drag', this._onMarkerDrag, this);
     marker.on('dragend', this._onMarkerDragEnd, this);
 
+    if (this.options.icon) {
+      marker.setIcon(this.options.icon);
+    }
+
+    // Clear the existing marker if the user does not want multiple markers present
+    if (this.options.multiple) {
+      // Allow multiple markers
+    } else {
+      this._features.clearLayers();
+    }
+    // Add the new marker
     this._features.addLayer(marker);
 
     if (this._selectPoint === null) {

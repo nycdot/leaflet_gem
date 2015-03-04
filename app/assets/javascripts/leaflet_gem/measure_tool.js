@@ -67,6 +67,7 @@ L.Control.Measure = L.Control.extend({
   },
 
   _onMapClick: function(e) {
+
     var marker = new L.Marker(e.latlng, { draggable: true });
     marker.bindPopup('Lng: ' + e.latlng.lng.toFixed(6) + '<br />Lat: ' + e.latlng.lat.toFixed(6));
     marker.on('drag', this._onMarkerDrag, this);
@@ -78,9 +79,17 @@ L.Control.Measure = L.Control.extend({
     if (this._startPoint === null) {
       this._startPoint = e.latlng;
 
-    }
-    else if (this._endPoint === null) {
+      if (this.options.start_icon) {
+        marker.setIcon(this.options.start_icon);
+      }
+
+    } else if (this._endPoint === null) {
+
       this._endPoint = e.latlng;
+
+      if (this.options.end_icon) {
+        marker.setIcon(this.options.end_icon);
+      }
 
       this._line = new L.Polyline([ this._startPoint, this._endPoint ], { color: 'black', opacity: 0.5, stroke: true });
       this._features.addLayer(this._line);
