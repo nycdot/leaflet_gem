@@ -13,12 +13,23 @@ var baseIcon = L.Icon.extend({
         }
     });
 
-var redIcon = new baseIcon({iconUrl: 'http://maps.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png'});
-var blueIcon = new baseIcon({iconUrl: 'http://maps.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png'});
-var purpleIcon = new baseIcon({iconUrl: 'http://maps.google.com/intl/en_us/mapfiles/ms/micons/purple-dot.png'});
-var yellowIcon = new baseIcon({iconUrl: 'http://maps.google.com/intl/en_us/mapfiles/ms/micons/yellow-dot.png'});
-var greenIcon = new baseIcon({iconUrl: 'http://maps.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png'});
-var orangeIcon = new baseIcon({iconUrl: 'http://maps.google.com/intl/en_us/mapfiles/ms/micons/orange-dot.png'});
+var yellowIcon    = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/yellow.png'});
+var yellowDotIcon = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/yellow-dot.png'});
+var blueIcon      = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/blue.png'});
+var blueDotIcon   = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/blue-dot.png'});
+var greenIcon     = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/green.png'});
+var greenDotIcon  = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/green-dot.png'});
+var cyanIcon      = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/lightblue.png'});
+var cyanDotIcon   = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/ltblue-dot.png'});
+var orangeIcon    = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/orange.png'});
+var orangeDotIcon = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/orange-dot.png'});
+var pinkIcon      = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/pink.png'});
+var pinkDotIcon   = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/pink-dot.png'});
+var purpleIcon    = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/purple.png'});
+var purpleDotIcon = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/purple-dot.png'});
+var redIcon       = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/red.png'});
+var redDotIcon    = new baseIcon({iconUrl: 'http://maps.google.com/mapfiles/ms/micons/red-dot.png'});
+
 
 var baseRouteIcon = L.Icon.extend({
         options: {
@@ -96,4 +107,3 @@ var placeCandidateQ = new baseRouteIcon({iconUrl: 'http://maps.google.com/mapfil
 var placeCandidateR = new baseRouteIcon({iconUrl: 'http://maps.google.com/mapfiles/marker_yellowR.png'});
 var placeCandidateS = new baseRouteIcon({iconUrl: 'http://maps.google.com/mapfiles/marker_yellowS.png'});
 var placeCandidateT = new baseRouteIcon({iconUrl: 'http://maps.google.com/mapfiles/marker_yellowT.png'});
-
