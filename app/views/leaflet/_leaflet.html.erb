@@ -2,8 +2,12 @@
 
 	<script type="text/javascript" charset="utf-8">
 
-		<%=raw generate_map(options) %>
+	<%=raw generate_map(options) %>
 
 	</script>
 <% end %>
-<div id="<%= options[:mapid] %>" class="<%= options[:class] unless options[:class].nil? %>" style="<%= options[:style] unless options[:style].nil? %>"></div>
+<div id="<%= options[:mapid] %>" class="<%= options[:class] unless options[:class].nil? %>" style="<%= options[:style] unless options[:style].nil? %>">
+
+	<%= render @map_panels unless @map_panels.blank? %>
+
+</div>
