@@ -2,8 +2,8 @@ module LeafletHelper
 
   # Defaults
   MAPID = "map"
-  MINZOOM = 0
-  MAXZOOM = 18
+  MINZOOM = 10
+  MAXZOOM = 22
   TILE_PROVIDER = 'GOOGLEMAP'
   TILE_STYLE_ID = 997
 
@@ -18,6 +18,7 @@ module LeafletHelper
     options_with_indifferent_access[:mapid] ||= MAPID
     options_with_indifferent_access[:min_zoom] ||= MINZOOM
     options_with_indifferent_access[:max_zoom] ||= MAXZOOM
+    options_with_indifferent_access[:max_native_zoom] ||= MAXZOOM
     options_with_indifferent_access[:tile_provider] ||= TILE_PROVIDER
     options_with_indifferent_access[:tile_style_id] ||= TILE_STYLE_ID
 

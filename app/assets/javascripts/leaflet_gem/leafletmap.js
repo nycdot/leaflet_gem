@@ -41,11 +41,11 @@ var leaflet_tools = new function() {
 		if (options.tile_provider == 'OPENSTREETMAP') {
 			var mapUrl = OPENSTREETMAP_URL;
 			var mapAttrib = OPENSTREETMAP_ATTRIB;
-			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, attribution: mapAttrib}).addTo(LMmap);
+			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, maxNativeZoom: options.max_native_zoom, zoomControl: false, detectRetina: true, attribution: true}).addTo(LMmap);
 		} else if (options.tile_provider == 'MAPBOX') {
 			var mapUrl = MAPBOX_URL.replace("%map_key%", options.map_key).replace("%access_token%", options.access_token);
 			//Console.log(mapURL);
-			L.tileLayer(mapUrl, {zoomControl: false, detectRetina: true}).addTo(LMmap);
+			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, maxNativeZoom: options.max_native_zoom, zoomControl: false, detectRetina: true, attribution: true}).addTo(LMmap);
 		} else {
 			var googleLayer = new L.Google('ROADMAP');
 	    LMmap.addLayer(googleLayer);
