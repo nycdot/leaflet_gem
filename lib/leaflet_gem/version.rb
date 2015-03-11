@@ -1,3 +1,3 @@
 module LeafletGem
-  VERSION = "0.0.13a"
+  VERSION = "0.0.14"
 end
