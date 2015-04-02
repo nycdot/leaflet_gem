@@ -56,6 +56,11 @@ L.Control.Measure = L.Control.extend({
     this._enabled = false;
     L.DomUtil.removeClass(this._button, 'leaflet-toolbar-enabled');
     this._map.off('click', this._onMapClick, this);
+    this._startPoint = null;
+    this._endPoint = null;
+    this._line = null;
+    this._features.clearLayers();
+    this._markerList = [];
   },
 
   _onClick: function() {
@@ -68,6 +73,12 @@ L.Control.Measure = L.Control.extend({
 
   _onMapClick: function(e) {
 
+    // if both end points are set we can ignore this click
+    if (this._startPoint && this._endPoint) {
+      return;
+    }
+
+    // Otherwise we need to create a marker and add it to the map
     var marker = new L.Marker(e.latlng, { draggable: true });
     marker.bindPopup('Lng: ' + e.latlng.lng.toFixed(6) + '<br />Lat: ' + e.latlng.lat.toFixed(6));
     marker.on('drag', this._onMarkerDrag, this);
@@ -111,10 +122,11 @@ L.Control.Measure = L.Control.extend({
     listLatng[i] = marker.getLatLng();
     this._line.setLatLngs(listLatng);
 
-    if (i == 0)
-    this._startPoint = marker.getLatLng();
-    else if (i == (this._markerList.length - 1))
-    this._endPoint = marker.getLatLng();
+    if (i == 0) {
+      this._startPoint = marker.getLatLng();
+    } else if (i == (this._markerList.length - 1)) {
+      this._endPoint = marker.getLatLng();
+    }
   },
   _onMarkerDragEnd: function(e) {
     var distance = this._startPoint.distanceTo(this._endPoint) * 3.280839895; // convert to feet
