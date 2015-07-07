@@ -56,6 +56,7 @@ L.Control.DrawPolygon = L.Control.extend({
     //this._polygon_drawer.disable();
     this._enabled = false;
     this._features.clearLayers();
+    this._polygon_drawer.disable();
 
     L.DomUtil.removeClass(this._button, 'leaflet-toolbar-enabled');
     // Call the call back if it exists
