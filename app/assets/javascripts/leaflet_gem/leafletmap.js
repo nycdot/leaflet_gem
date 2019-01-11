@@ -38,7 +38,8 @@ var leaflet_tools = new function() {
 		if(options.is_static) {
 			map_options = {
 				zoomControl: false,
-				dragging: false
+				dragging: false,
+				scrollWheelZoom: false
 			};
 		}
 		LMmap = L.map(mapId, map_options);
