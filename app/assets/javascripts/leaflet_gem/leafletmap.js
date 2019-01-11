@@ -34,10 +34,15 @@ var leaflet_tools = new function() {
 	 * that should be passed to the map constructor
 	 */
 	this.init = function(mapId, options) {
-		LMmap = L.map(mapId);
-		//Console.log(options);
-		//alert(options.min_zoom);
-		//alert(options.max_zoom);
+		var map_options = {};
+		if(options.is_static) {
+			map_options = {
+				zoomControl: false,
+				dragging: false
+			};
+		}
+		LMmap = L.map(mapId, map_options);
+
 		if (options.tile_provider == 'OPENSTREETMAP') {
 			var mapUrl = OPENSTREETMAP_URL;
 			var mapAttrib = OPENSTREETMAP_ATTRIB;
