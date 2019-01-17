@@ -15,8 +15,9 @@ var leaflet_tools = new function() {
 	var OPENSTREETMAP_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var OPENSTREETMAP_ATTRIB = 'Map data © OpenStreetMap contributors';
 
-	var MAPBOX_URL = 'http://{s}.tiles.mapbox.com/v4/%map_key%/{z}/{x}/{y}.png?access_token=%access_token%';
-
+	var MAPBOX_URL = 'http://api.tiles.mapbox.com/v4/%map_key%/{z}/{x}/{y}.png?access_token=%access_token%';
+	var MAPBOX_ATTRIB = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+  
   this.markers = function() {
 		return LMmarkers;
 	}
@@ -46,12 +47,10 @@ var leaflet_tools = new function() {
 
 		if (options.tile_provider == 'OPENSTREETMAP') {
 			var mapUrl = OPENSTREETMAP_URL;
-			var mapAttrib = OPENSTREETMAP_ATTRIB;
-			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, maxNativeZoom: options.max_native_zoom, zoomControl: false, detectRetina: true, attribution: true}).addTo(LMmap);
+			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, maxNativeZoom: options.max_native_zoom, zoomControl: false, detectRetina: true, attribution: OPENSTREETMAP_ATTRIB}).addTo(LMmap);
 		} else if (options.tile_provider == 'MAPBOX') {
-			var mapUrl = MAPBOX_URL.replace("%map_key%", options.map_key).replace("%access_token%", options.access_token);
-			//Console.log(mapURL);
-			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, maxNativeZoom: options.max_native_zoom, zoomControl: false, detectRetina: true, attribution: true}).addTo(LMmap);
+			var mapUrl = MAPBOX_URL.replace("%map_key%", options.map_key || 'mapbox.streets').replace("%access_token%", options.access_token);
+			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, maxNativeZoom: options.max_native_zoom, zoomControl: false, detectRetina: true, attribution: MAPBOX_ATTRIB}).addTo(LMmap);
 		} else {
 			var googleLayer = new L.Google('ROADMAP');
 	    LMmap.addLayer(googleLayer);
