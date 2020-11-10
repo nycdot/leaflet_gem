@@ -15,7 +15,7 @@ var leaflet_tools = new function() {
 	var OPENSTREETMAP_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var OPENSTREETMAP_ATTRIB = 'Map data © OpenStreetMap contributors';
 	
-	var MAPBOX_URL = 'http://api.mapbox.com/styles/v1/%map_key%/tiles/{z}/{x}/{y}?access_token=%access_token%';
+	var MAPBOX_URL = 'http://api.mapbox.com/styles/v1/%map_key%/tiles/256/{z}/{x}/{y}?access_token=%access_token%';
 	var MAPBOX_ATTRIB = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
   
   this.markers = function() {
