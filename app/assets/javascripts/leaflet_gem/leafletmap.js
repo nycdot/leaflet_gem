@@ -14,8 +14,8 @@ var leaflet_tools = new function() {
 
 	var OPENSTREETMAP_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var OPENSTREETMAP_ATTRIB = 'Map data © OpenStreetMap contributors';
-	
-	var MAPBOX_URL = 'http://api.mapbox.com/styles/v1/%map_key%/tiles/256/{z}/{x}/{y}?access_token=%access_token%';
+
+  var MAPBOX_URL = 'http://api.mapbox.com/styles/v1/%map_key%/tiles/{z}/{x}/{y}?access_token=%access_token%';
 	var MAPBOX_ATTRIB = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
   
   this.markers = function() {
@@ -49,8 +49,19 @@ var leaflet_tools = new function() {
 			var mapUrl = OPENSTREETMAP_URL;
 			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, maxNativeZoom: options.max_native_zoom, zoomControl: false, detectRetina: true, attribution: OPENSTREETMAP_ATTRIB}).addTo(LMmap);
 		} else if (options.tile_provider == 'MAPBOX') {
-			var mapUrl = MAPBOX_URL.replace("%map_key%", options.map_key || 'mapbox.streets').replace("%access_token%", options.access_token);
-			L.tileLayer(mapUrl, {minZoom: options.min_zoom, maxZoom: options.max_zoom, maxNativeZoom: options.max_native_zoom, zoomControl: false, detectRetina: true, attribution: MAPBOX_ATTRIB}).addTo(LMmap);
+			var mapUrl = MAPBOX_URL.replace("%map_key%", options.map_key || 'mapbox/streets-v11').replace("%access_token%", options.access_token);
+      L.tileLayer(mapUrl,
+        {
+          minZoom: options.min_zoom,
+          maxZoom: options.max_zoom,
+          maxNativeZoom: options.max_native_zoom,
+          zoomControl: false,
+          detectRetina: true,
+          attribution: MAPBOX_ATTRIB,
+          tileSize: 512,
+          zoomOffset: -1
+        }
+      ).addTo(LMmap);
 		} else {
 			var googleLayer = new L.Google('ROADMAP');
 	    LMmap.addLayer(googleLayer);
