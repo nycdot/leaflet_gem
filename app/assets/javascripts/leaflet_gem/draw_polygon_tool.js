@@ -1,4 +1,5 @@
 
+// TODO: Remove this control in favor of L.Control.SimsDrawPolygon
 L.Control.DrawPolygon = L.Control.extend({
   options: {
     position: 'topleft'
@@ -30,16 +31,16 @@ L.Control.DrawPolygon = L.Control.extend({
     this._polygon_drawer = new L.Draw.Polygon(this._map);
 
     L.DomEvent
-    .on(this._button, 'click', L.DomEvent.stopPropagation)
-    .on(this._button, 'mousedown', L.DomEvent.stopPropagation)
-    .on(this._button, 'dblclick', L.DomEvent.stopPropagation)
-    .on(this._button, 'click', L.DomEvent.preventDefault)
-    .on(this._button, 'click', this._onClick, this);
+      .on(this._button, 'click', L.DomEvent.stopPropagation)
+      .on(this._button, 'mousedown', L.DomEvent.stopPropagation)
+      .on(this._button, 'dblclick', L.DomEvent.stopPropagation)
+      .on(this._button, 'click', L.DomEvent.preventDefault)
+      .on(this._button, 'click', this._onClick, this);
 
     return this._container;
   },
 
-  _enable: function() {
+  _enable: function () {
     this._polygon_drawer.enable();
     this._features.clearLayers();
     this._layer = null;
@@ -52,7 +53,7 @@ L.Control.DrawPolygon = L.Control.extend({
     }
 
   },
-  _disable: function() {
+  _disable: function () {
     //this._polygon_drawer.disable();
     this._enabled = false;
     this._features.clearLayers();
@@ -65,7 +66,7 @@ L.Control.DrawPolygon = L.Control.extend({
     }
   },
 
-  _onClick: function() {
+  _onClick: function () {
     if (this._enabled)
       this._disable();
     else
@@ -74,7 +75,7 @@ L.Control.DrawPolygon = L.Control.extend({
 
 });
 
-L.control.drawPolygon = function(options) {
+L.control.drawPolygon = function (options) {
   return new L.Control.DrawPolygon(options);
 };
 
@@ -82,7 +83,7 @@ L.Map.mergeOptions({
   drawPolygon: false
 });
 
-L.Map.addInitHook(function() {
+L.Map.addInitHook(function () {
   if (this.options.drawPolygon) {
     this.drawPolygon = new L.Control.DrawPolygon();
     this.addControl(this.drawPolygon);

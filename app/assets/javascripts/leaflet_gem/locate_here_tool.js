@@ -27,16 +27,16 @@ L.Control.LocateHere = L.Control.extend({
     this._button.title = 'Locate Here';
 
     L.DomEvent
-    .on(this._button, 'click', L.DomEvent.stopPropagation)
-    .on(this._button, 'mousedown', L.DomEvent.stopPropagation)
-    .on(this._button, 'dblclick', L.DomEvent.stopPropagation)
-    .on(this._button, 'click', L.DomEvent.preventDefault)
-    .on(this._button, 'click', this._onClick, this);
+      .on(this._button, 'click', L.DomEvent.stopPropagation)
+      .on(this._button, 'mousedown', L.DomEvent.stopPropagation)
+      .on(this._button, 'dblclick', L.DomEvent.stopPropagation)
+      .on(this._button, 'click', L.DomEvent.preventDefault)
+      .on(this._button, 'click', this._onClick, this);
 
     return this._container;
   },
 
-  _enable: function() {
+  _enable: function () {
     this._selectPoint = null;
 
     this._features.clearLayers();
@@ -51,7 +51,7 @@ L.Control.LocateHere = L.Control.extend({
     }
 
   },
-  _disable: function() {
+  _disable: function () {
     this._enabled = false;
     L.DomUtil.removeClass(this._button, 'leaflet-toolbar-enabled');
     // Remove the marker
@@ -64,14 +64,14 @@ L.Control.LocateHere = L.Control.extend({
     this._map.off('click', this._onMapClick, this);
   },
 
-  _onClick: function() {
+  _onClick: function () {
     if (this._enabled)
       this._disable();
     else
       this._enable();
   },
 
-  _onMapClick: function(e) {
+  _onMapClick: function (e) {
     var marker = new L.Marker(e.latlng, { draggable: true });
     marker.bindPopup('Lng: ' + e.latlng.lng.toFixed(6) + '<br />Lat: ' + e.latlng.lat.toFixed(6));
     marker.on('drag', this._onMarkerDrag, this);
@@ -98,11 +98,11 @@ L.Control.LocateHere = L.Control.extend({
     }
   },
 
-  _onMarkerDrag: function(e) {
+  _onMarkerDrag: function (e) {
     var marker = e.target;
     this._selectPoint = marker.getLatLng();
   },
-  _onMarkerDragEnd: function(e) {
+  _onMarkerDragEnd: function (e) {
     var marker = e.target;
     if (this.options.on_drag_end) {
       this.options.on_drag_end(marker.getLatLng());
@@ -110,7 +110,7 @@ L.Control.LocateHere = L.Control.extend({
   }
 });
 
-L.control.locateHere = function(options) {
+L.control.locateHere = function (options) {
   return new L.Control.LocateHere(options);
 };
 
@@ -118,7 +118,7 @@ L.Map.mergeOptions({
   locateHere: false
 });
 
-L.Map.addInitHook(function() {
+L.Map.addInitHook(function () {
   if (this.options.locateHere) {
     this.locateHere = new L.Control.LocateHere();
     this.addControl(this.locateHere);
